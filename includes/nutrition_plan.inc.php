@@ -8,8 +8,8 @@ if (isset($_POST['submit'])) {
     
     $name = mysqli_real_escape_string($conn, $_POST['name']);
     $protein = mysqli_real_escape_string($conn, $_POST['proteins']);
-    $fats = mysqli_real_escape_string($conn, $_POST['carbs']);
-    $carbs = mysqli_real_escape_string($conn, $_POST['fats']);
+    $fats = mysqli_real_escape_string($conn, $_POST['fats']);
+    $carbs = mysqli_real_escape_string($conn, $_POST['carbs']);
     $cals = $protein*4 + $fats*9 + $carbs*4;
     
     //Error handlers
