@@ -203,6 +203,7 @@ header .nav-login a{
 
 .main-container{
     padding-top: 40px;
+    text-align: center;
 }
 
 .main-container h2{
@@ -220,6 +221,29 @@ header .nav-login a{
     font-size: 15px;
     color: #111;
     line-height: 50px;
+	align: center;
+}
+
+.main-container table{
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.main-container td{
+    border: 1px solid black;
+    padding: 15px;
+}
+
+.main-container input[type=submit]{
+	display: block;
+	margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 50px;
+    font-family:  arial;
+    font-size: 15px;
+    color: #111;
+    line-height: 20px;
 	align: center;
 }
 

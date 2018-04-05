@@ -1,5 +1,6 @@
 <?php
     include_once 'header.php';
+    include_once 'includes/dbh.inc.php'
 ?>
 
 <section class ="main-container">
@@ -7,12 +8,60 @@
         <?php
             if(isset($_SESSION['u_uid'])){
 				$firstname = $_SESSION['u_first'];
-				echo "<h2>$firstname's Nutrition Plans</h2>";
-				echo '<select name="routine_nutrition" class="ddList">
-					   <option value="">Please Select a Plan</option>
-					   <option class="lt" value="--">none</option>
-					   <option class="lt" value="AL">Alabama</option>
-					   </select>';
+                $id = $_SESSION['u_id'];
+				$sql = "SELECT * FROM nutritionplan WHERE UserID = $id";
+                $result = mysqli_query($conn,$sql) or die("Bad Query: $sql");
+                
+                echo "<h2>$firstname's Nutrition Plans</h2>";
+                
+                echo '<form id="form" action="" method="post">';
+                echo '<select name="nutrition" class="ddList">';
+                echo "<option value='default'>Please Select a Plan</option>";
+                echo "<option value='new'>Create New</option>";
+                while($row = mysqli_fetch_assoc($result)){
+                    $rowname = $row['Name'];
+                    echo "<option value='$rowname'>" . $rowname . "</option>";
+                }
+                echo '</select>';
+                echo '<input type="submit" value="Select">';
+                echo '</form>';
+                
+                $value = $_POST['nutrition'] ?? 'default';
+                                
+                if($value == "default"){
+                }else if($value == "new"){
+                    echo "< NEW FORM TO BE ADDED >";
+                }else{
+                    echo "<h2>Nutritional Information for $value</h2>";
+                    echo "<table border='1'>";
+                    echo "<tr><td>Calories</td><td>Protein</td><td>Carbohydrates</td><td>Fats</td></tr>";
+                    $sql = "SELECT * FROM nutritionplan WHERE UserID = $id AND Name = '$value'";
+                    $result = mysqli_query($conn,$sql) or die("Bad Query: $sql");
+                    while($row = mysqli_fetch_assoc($result)){
+                          $rowcals = $row['MaxCals'];
+                          $rowprot = $row['MaxProtein'];
+                          $rowcarb = $row['MaxCarbs'];
+                          $rowfats = $row['MaxFats'];
+                          echo "<tr><td>$rowcals</td><td>$rowprot</td><td>$rowcarb</td><td>$rowfats</td></tr>";
+                    }
+                    echo "</table>";
+                    
+                    // SUGGESTED FOODS //
+                    echo "<h2>Your Suggested Foods:</h2>";
+                    echo "<table border='1'>";
+                    echo "<tr><td>Name</td><td>Calories</td><td>Protein</td><td>Carbohydrates</td><td>Fats</td></tr>";
+                    $sql = "SELECT f.name, f.calories, f.protein, f.carbs, f.fat FROM `madeupof` AS m, `food` AS f WHERE f.ID = m.foodId AND m.UserId = $id AND m.NutritionPlanName = '$value'";
+                    $result = mysqli_query($conn,$sql) or die("Bad Query: $sql");
+                    while($row = mysqli_fetch_assoc($result)){
+                          $rname = $row['name'];
+                          $rowcals = $row['calories'];
+                          $rowprot = $row['protein'];
+                          $rowcarb = $row['carbs'];
+                          $rowfats = $row['fat'];
+                          echo "<tr><td>$rname</td><td>$rowcals</td><td>$rowprot</td><td>$rowcarb</td><td>$rowfats</td></tr>";
+                    }
+                    echo "</table>";
+                }  
             }
             else{
 				header("Location: index.php?error=notloggedin");
