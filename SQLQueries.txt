@@ -1,0 +1,3 @@
+Populate workout routine
+SELECT e.name, e.bodyPart, c.sets, c.reps FROM `exercise` AS e, `consistsof` AS c 
+WHERE c.UserID = 1 AND c.Workout_Id = 1 AND c.exerciseId = e.ID //change 1's to userinput
