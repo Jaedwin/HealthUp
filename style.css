@@ -146,6 +146,10 @@ header nav img{
     padding: 5px;
 }
 
+tr:first-child {
+  font-weight: bold
+}
+
 header .nav-login{
     float: right;
 }
@@ -253,6 +257,40 @@ header .nav-login a{
     margin-left: auto;
     margin-right: auto;
     width: 50%;
+}
+
+/*nutrition_plan.php*/
+
+.nutritionplan-form {
+    width: 400px;
+    margin: 0 auto;
+    padding-top: 30px;    
+}
+
+.nutritionplan-form input{
+    width: 50%;
+    height: 40px;
+    padding: 0px 5%;
+    margin-bottom: 4px;
+    border: none;
+    background-color: #fff;
+    font-family:  arial;
+    font-size: 16px;
+    color: #111;
+    line-height: 40px;
+}
+
+.nutritionplan-form button{
+    display: block;
+    margin: 0 auto;
+    width: 30%;
+    height: 40px;
+    border: none;
+    background-color: #222;
+    font-family:  arial;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
 }
 
 /*signup.php*/

@@ -30,9 +30,17 @@
                                 
                 if($value == "default"){
                 }else if($value == "new"){
-                    echo "< NEW FORM TO BE ADDED >";
+                    echo '<form class="nutritionplan-form" action="includes/nutrition_plan.inc.php" method="POST">
+                                <h2>New Nutrition Plan</h2>
+                                <input type ="text" name ="name" placeholder="Plan Name">
+                                <input type ="text" name ="proteins" placeholder="Desired Proteins">
+                                <input type ="text" name ="carbs" placeholder="Desired Carbohydrates">
+                                <input type ="text" name ="fats" placeholder="Desired Fats">
+                                <button type ="submit" name="submit">Submit</button>
+                                </form>';
                 }else{
-                    echo "<h2>Nutritional Information for $value</h2>";
+                    echo "<h2>Nutritional Information for Plan:</h2>";
+                    echo "<h2>$value</h2>";
                     echo "<table border='1'>";
                     echo "<tr><td>Calories</td><td>Protein</td><td>Carbohydrates</td><td>Fats</td></tr>";
                     $sql = "SELECT * FROM nutritionplan WHERE UserID = $id AND Name = '$value'";
