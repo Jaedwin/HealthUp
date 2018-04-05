@@ -1,3 +1,7 @@
 Populate workout routine
 SELECT e.name, e.bodyPart, c.sets, c.reps FROM `exercise` AS e, `consistsof` AS c 
 WHERE c.UserID = 1 AND c.Workout_Id = 1 AND c.exerciseId = e.ID //change 1's to userinput
+
+Populate nutritionplan
+SELECT f.name, f.calories, f.protein, f.carbs, f.fat FROM `madeupof` AS m, `food` AS f 
+WHERE f.ID = m.foodId AND m.UserId = 1 AND m.NutritionPlanName = "Bulking" // change to userinput
