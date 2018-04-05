@@ -10,17 +10,14 @@ if (isset($_POST['submit'])) {
     
     //Error handlers
     //Check for empty fields
-	if(isset($_SESSION['u_uid'])){
-		header("Location: ../clientreg.php?clientreg=set");	
-		exit();
-	}
+	$sid = $_SESSION['u_id'];
 
 	if (empty($phone) || empty($address) || empty($availability)){
         header("Location: ../clientreg.php?clientreg=empty");
         exit();
     } 
 	else {
-		$sid = $_SESSION['u_id'];
+		
 		$sql = "SELECT * FROM client WHERE userid = $sid";
 		$result = mysqli_query($conn, $sql);
         $resultCheck = mysqli_num_rows($result);
@@ -31,6 +28,7 @@ if (isset($_POST['submit'])) {
 		} else {
 				//Insert the user into the database
 				$sql = "INSERT INTO client(userid, phone, address, availability) VALUES ('$sid', '$phone','$address','$availability');"; 
+				mysqli_query($conn, $sql);
 				header("Location: ../clientreg.php?clientreg=success");
 				exit();
 			}
