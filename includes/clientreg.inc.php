@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 if (isset($_POST['submit'])) {
     
     include_once 'dbh.inc.php';
@@ -10,7 +10,7 @@ if (isset($_POST['submit'])) {
     
     //Error handlers
     //Check for empty fields
-	if($_SESSION['u_uid'] != ""){
+	if(isset($_SESSION['u_uid'])){
 		header("Location: ../clientreg.php?clientreg=set");	
 		exit();
 	}
