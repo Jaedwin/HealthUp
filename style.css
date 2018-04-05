@@ -213,6 +213,17 @@ header .nav-login a{
     text-align: center;
 }
 
+.main-container select{
+	display: block;
+	margin: 0 auto;
+    font-family:  arial;
+    font-size: 15px;
+    color: #111;
+    line-height: 50px;
+	align: center;
+}
+
+
 .main-container img{
     display: block;
     margin-left: auto;
