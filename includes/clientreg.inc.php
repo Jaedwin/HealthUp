@@ -1,5 +1,7 @@
 <?php
+
 session_start();
+
 if (isset($_POST['submit'])) {
     
     include_once 'dbh.inc.php';
@@ -10,14 +12,13 @@ if (isset($_POST['submit'])) {
     
     //Error handlers
     //Check for empty fields
-	$sid = $_SESSION['u_id'];
-
+	
 	if (empty($phone) || empty($address) || empty($availability)){
         header("Location: ../clientreg.php?clientreg=empty");
         exit();
     } 
 	else {
-		
+		$sid = $_SESSION['u_id'];
 		$sql = "SELECT * FROM client WHERE userid = $sid";
 		$result = mysqli_query($conn, $sql);
         $resultCheck = mysqli_num_rows($result);

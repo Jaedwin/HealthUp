@@ -20,7 +20,11 @@
                             echo '<li><a href ="index.php">Home</a></li>
                 <li><a href ="nutrition_plan.php">Nutrition Plan</a></li>
                 <li><a href ="workout_routine.php">Workout Routine</a></li>
-				<li><a href ="clientreg.php">Client Registration</a></li>';
+				<li><a href ="clientreg.php">Client Registration</a></li>
+				<li><a href ="employeereg.php">Employee Registration</a></li>
+				<li><a href ="clientupdate.php">Client Update</a></li>
+				<li><a href ="employeeupdate.php">Employee Update</a></li>
+				<li><a href ="gym.php">Gym</a></li>';
                     }else{
                         echo '<li><a href ="index.php">Home</a></li>';
                     }
