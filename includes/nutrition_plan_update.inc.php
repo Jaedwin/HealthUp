@@ -48,15 +48,27 @@ if (isset($_POST['submit_update_nutri'])) {
     exit();
 	
 }else if (isset($_POST['submit_Delete'])) {
-		include_once 'dbh.inc.php';
+	include_once 'dbh.inc.php';
 	$id = $_SESSION['u_id'];
 	$name = mysqli_real_escape_string($conn, $_POST['name']); //name
 	$sql3 = "DELETE FROM NutritionPlan WHERE UserId = $id AND Name='$name'";
 	mysqli_query($conn, $sql3) or die("Bad Query: $sql");
 	header("Location: ../nutrition_plan.php?submit=success");
     exit();
-	//TODO
-} else {
+	
+} else if (isset($_POST['submit_Remove_Food'])) {
+	
+	include_once 'dbh.inc.php';
+	$id = $_SESSION['u_id'];
+	$name = mysqli_real_escape_string($conn, $_POST['name']); //name of routine
+	$foodName = mysqli_real_escape_string($conn, $_POST['foodName']);
+	
+	$sql4 = "DELETE FROM MadeUpOf WHERE UserId = $id AND FoodName = '$foodName'";
+	mysqli_query($conn, $sql4) or die("Bad Query: $sql");
+	header("Location: ../nutrition_plan.php?submit=success");
+    exit();
+	
+}else {
     header("Location: ../signup.php");
     exit();
 }

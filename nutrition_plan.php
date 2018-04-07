@@ -88,12 +88,19 @@
 							<button type='submit' name='submit_add_food'>Add Food</button>
 							</form>";
 					
+					//remove food//
+					echo "<form action='includes/nutrition_plan_update.inc.php' method='POST'>
+							<input type='hidden' name='name' value='$value'>
+							<input type='text' name='foodName' placeholder='Food Name'>
+							<button type='submit' name='submit_Remove_Food'>Remove Food</button>
+							</form>";
+					
 					
 					//DELETE the plan TODO: play with the color of the button some more //
 					echo "<h2>___________________________________</h2>";
 					echo "<form action='includes/nutrition_plan_update.inc.php' method='POST'>
 							<input type='hidden' name='name' value='$value'> 
-							<button style='background:  #e74c3c  ;' button type='submit' name='submit_Delete'>DELETE</button>
+							<button style='background:  #e74c3c  ;' button type='submit' name='submit_Delete'>DELETE PLAN</button>
 							</form>";
 					
 					
