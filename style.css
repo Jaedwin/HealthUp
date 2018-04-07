@@ -293,6 +293,10 @@ header .nav-login a{
     cursor: pointer;
 }
 
+
+
+
+
 /*signup.php*/
 
 .signup-form {
@@ -326,6 +330,7 @@ header .nav-login a{
     color: #fff;
     cursor: pointer;
 }
+
 
 .signup-form button:hover{
     background-color: #111;

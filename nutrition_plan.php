@@ -11,7 +11,7 @@
                 $id = $_SESSION['u_id'];
 				$sql = "SELECT * FROM nutritionplan WHERE UserID = $id";
                 $result = mysqli_query($conn,$sql) or die("Bad Query: $sql");
-                
+                // if 
                 echo "<h2>$firstname's Nutrition Plans</h2>";
                 
                 echo '<form id="form" action="" method="post">';
@@ -39,6 +39,7 @@
                                 <button type ="submit" name="submit">Submit</button>
                                 </form>';
                 }else{
+					// Shows your macros and info
                     echo "<h2>Nutritional Information for Plan:</h2>";
                     echo "<h2>$value</h2>";
                     echo "<table border='1'>";
@@ -53,6 +54,16 @@
                           echo "<tr><td>$rowcals</td><td>$rowprot</td><td>$rowcarb</td><td>$rowfats</td></tr>";
                     }
                     echo "</table>";
+					
+					//  update macros //
+					echo "<form action='includes/nutrition_plan_update.inc.php' method='POST'>
+							<input type='hidden' name='name' value='$value'>
+							<input type='text' name='proteins' placeholder='Update Proteins'>
+							<input type='text' name='carbs' placeholder='Update Carbs'>
+							<input type='text' name='fats' placeholder='Update Fats'>
+							<button type='submit' name='submit_update_nutri'>Update</button>
+							</form>";
+					
                     
                     // SUGGESTED FOODS //
                     echo "<h2>Your Suggested Foods:</h2>";
@@ -69,6 +80,23 @@
                           echo "<tr><td>$rname</td><td>$rowcals</td><td>$rowprot</td><td>$rowcarb</td><td>$rowfats</td></tr>";
                     }
                     echo "</table>";
+					
+					//  add food //
+					echo "<form action='includes/nutrition_plan_update.inc.php' method='POST'>
+							<input type='hidden' name='name' value='$value'>
+							<input type='text' name='foodName' placeholder='Food Name'>
+							<button type='submit' name='submit_add_food'>Add Food</button>
+							</form>";
+					
+					
+					//DELETE the plan TODO: play with the color of the button some more //
+					echo "<h2>___________________________________</h2>";
+					echo "<form action='includes/nutrition_plan_update.inc.php' method='POST'>
+							<input type='hidden' name='name' value='$value'> 
+							<button style='background:  #e74c3c  ;' button type='submit' name='submit_Delete'>DELETE</button>
+							</form>";
+					
+					
                 }  
             }
             else{
