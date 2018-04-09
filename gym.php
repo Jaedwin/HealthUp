@@ -21,7 +21,14 @@
 		<input type ="text" name ="capacity2" placeholder="Capacity">
 		<input type ="text" name ="sin2" placeholder="SIN">
 		<button type ="submit" name="update">Update</button>
-		
+		<h2>Register Employee Information</h2>
+		<input type ="text" name ="SIN" placeholder="SIN">
+		<input type ="text" name ="wage" placeholder="Wage">
+		<input type ="text" name ="address" placeholder="Address">
+		<input type ="text" name ="phone" placeholder="Phone">
+		<input type ="text" name ="schedule" placeholder="Availability">
+		<input type ="text" name ="username" placeholder="Username">
+		<button type ="submit" name="register">Register</button>
 		</form> 
     </div>
 </section>

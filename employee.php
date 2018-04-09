@@ -6,17 +6,8 @@
 <section class ="main-container">
     <div class="main-wrapper">
 		<form class="signup-form" action="includes/employee.inc.php" method="POST">
-		<h2>Register Employee Information</h2>
-		<input type ="text" name ="SIN" placeholder="SIN">
-		<input type ="text" name ="wage" placeholder="Wage">
-		<input type ="text" name ="address" placeholder="Address">
-		<input type ="text" name ="phone" placeholder="Phone">
-		<input type ="text" name ="schedule" placeholder="Availability">
-		<button type ="submit" name="register">Register</button>
+		
 		<h2>Update Employee Information</h2>
-		<input type ="text" name ="uSIN" placeholder="SIN">
-		<input type ="text" name ="uwage" placeholder="Wage">
-		<input type ="text" name ="uaddress" placeholder="Address">
 		<input type ="text" name ="uphone" placeholder="Phone">
 		<input type ="text" name ="uschedule" placeholder="Availability">
 		<button type ="submit" name="update">Update</button>
