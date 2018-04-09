@@ -61,6 +61,60 @@ if (isset($_POST['add'])) {
 		}
 	}
 else */
+if (isset($_POST['register'])) {
+    
+    include_once 'dbh.inc.php';
+	
+    $SIN = mysqli_real_escape_string($conn, $_POST['SIN']);
+    $wage = mysqli_real_escape_string($conn, $_POST['wage']);
+    $address = mysqli_real_escape_string($conn, $_POST['address']);
+	$phone = mysqli_real_escape_string($conn, $_POST['phone']);
+	$schedule = mysqli_real_escape_string($conn, $_POST['schedule']);
+    $username = mysqli_real_escape_string($conn, $_POST['username']);
+    //Error handlers
+    //Check for empty fields
+	if (empty($SIN) || empty($wage) || empty($address) || empty($phone) || empty($schedule) || empty($username)){
+        header("Location: ../gym.php?employeereg=empty");
+        exit();
+    }
+	else{
+		$sql = "SELECT ID FROM user WHERE Username = '$username'";
+		$result = mysqli_query($conn, $sql) or die($sql);
+        $resultCheck = mysqli_num_rows($result);
+		
+		if($resultCheck != 1){
+			header("Location: ../gym.php?employeereg=NoUserFound");
+			exit();
+		}
+		$row = mysqli_fetch_assoc($result);
+		$employee_id = $row['ID'];
+		
+		$sql = "SELECT * FROM gym WHERE location = '$address'";
+		$result = mysqli_query($conn, $sql);
+        $resultCheck = mysqli_num_rows($result);
+		if($resultCheck != 1){
+			header("Location: ../employee.php?employeereg=NoLocationFound");
+			exit();
+		}
+		////////////
+		
+		$sql = "SELECT * FROM employee WHERE UserId = '$employee_id'";
+		$result = mysqli_query($conn, $sql);
+        $resultCheck = mysqli_num_rows($result);
+                
+        if($resultCheck > 0){
+			header("Location: ../employee.php?employeereg=alreadyregistered");
+			exit();
+		} else {
+				//Insert the user into the database
+				$sql = "INSERT INTO employee(sin, userid, wage, address, phone, schedule) VALUES ('$SIN', '$employee_id', '$wage','$address','$phone', '$schedule');"; 
+				mysqli_query($conn, $sql);
+				header("Location: ../employee.php?employeereg=success");
+				exit();
+			}
+		}
+	}
+else
 	if (isset($_POST['remove'])) {
 		include_once 'dbh.inc.php';
 		

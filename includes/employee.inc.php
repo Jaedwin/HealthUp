@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-
+/*
 if (isset($_POST['register'])) {
     
     include_once 'dbh.inc.php';
@@ -44,36 +44,28 @@ if (isset($_POST['register'])) {
 			}
 		}
 	}
-else if (isset($_POST['update'])) {
+else*/ 
+if (isset($_POST['update'])) {
     
     include_once 'dbh.inc.php';
 	
-    $SIN = mysqli_real_escape_string($conn, $_POST['uSIN']);
-    $wage = mysqli_real_escape_string($conn, $_POST['uwage']);
-    $address = mysqli_real_escape_string($conn, $_POST['uaddress']);
 	$phone = mysqli_real_escape_string($conn, $_POST['uphone']);
 	$schedule = mysqli_real_escape_string($conn, $_POST['uschedule']);
     
     //Error handlers
     //Check for empty fields
 	
-	if (empty($SIN) || empty($wage) || empty($address) || empty($phone) || empty($schedule)){
+	if (empty($phone) || empty($schedule)){
         header("Location: ../employee.php?employeeupdate=empty");
         exit();
     } 
 	else 
 	{
-		$sql = "SELECT * FROM gym WHERE location = '$address'";
-		$result = mysqli_query($conn, $sql);
-        $resultCheck = mysqli_num_rows($result);
-		if($resultCheck != 1){
-			header("Location: ../employee.php?employeereg=NoLocationFound");
-			exit();
-		}
 		$sid = $_SESSION['u_id'];
 			
 		//Insert the user into the database
-		$sql = "UPDATE employee SET sin = '$SIN', wage = '$wage', address = '$address', phone = '$phone', schedule = '$schedule' WHERE userid = '$sid';"; 
+		$sql = "UPDATE employee SET phone = '$phone', schedule = '$schedule' WHERE userid = '$sid';"; 
+		
 		mysqli_query($conn, $sql);
 		header("Location: ../employee.php?employeeupdate=success");
 		exit();
