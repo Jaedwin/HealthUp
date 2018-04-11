@@ -24,7 +24,6 @@
 		<h2>Register Employee Information</h2>
 		<input type ="text" name ="SIN" placeholder="SIN">
 		<input type ="text" name ="wage" placeholder="Wage">
-		<input type ="text" name ="address" placeholder="Address">
 		<input type ="text" name ="phone" placeholder="Phone">
 		<input type ="text" name ="schedule" placeholder="Availability">
 		<input type ="text" name ="username" placeholder="Username">
