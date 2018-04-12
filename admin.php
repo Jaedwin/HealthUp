@@ -12,24 +12,33 @@
                 // GYM's
                 $sql = "SELECT * FROM gym";
                 $result = mysqli_query($conn,$sql) or die("Bad Query: $sql");
-				echo "<h2>Admin Panel</h2>";
+				echo "<h1>Admin Panel</h1>";
                 echo "<h2>Gyms</h2>";
                 
                 echo '<form id="form" action="" method="post">';
                 echo '<select name="gyms" class="ddList">';
                 echo "<option value='default'>Please Select a Gym</option>";
+                echo "<option value='new'>Create New</option>";                
                 while($row = mysqli_fetch_assoc($result)){
                     $rowname = $row['Name'];
-                    echo "<option value='$rowname'>" . $rowname . "</option>";
+                    echo "<option value='$rowname'>"."Delete ".$rowname."</option>";
                 }
                 echo '</select>';
-                echo '<input type="submit" value="Delete">';
+                echo '<input type="submit" value="Submit">';
                 echo '</form>';    
                 $value = $_POST['gyms'];
                 
-                $sql = "DELETE FROM gym WHERE Name = '$value'";
-                $result = mysqli_query($conn,$sql) or die("Bad Query: $sql");
-
+                if($value == "new"){
+                    echo '<form class="nutritionplan-form" action="includes/admin_gym.inc.php" method="POST">
+                            <input type ="text" name ="name" placeholder="Name">
+                            <input type ="text" name ="Location" placeholder="Location">
+                            <button type ="submit" name="submit">Submit</button>
+                            </form>';          
+                }else{
+                    $sql = "DELETE FROM gym WHERE Name = '$value'";
+                    $result = mysqli_query($conn,$sql) or die("Bad Query: $sql");
+                }
+                
                 // FOOD's
                 $sql = "SELECT * FROM food";
                 $result = mysqli_query($conn,$sql) or die("Bad Query: $sql");
@@ -38,17 +47,29 @@
                 echo '<form id="form" action="" method="post">';
                 echo '<select name="foods" class="ddList">';
                 echo "<option value='default'>Please Select a Food</option>";
+                echo "<option value='new'>Create New</option>";
                 while($row = mysqli_fetch_assoc($result)){
                     $rowname = $row['Name'];
-                    echo "<option value='$rowname'>" . $rowname . "</option>";
+                    echo "<option value='$rowname'>" ."Delete ". $rowname . "</option>";
                 }
                 echo '</select>';
-                echo '<input type="submit" value="Delete">';
+                echo '<input type="submit" value="Submit">';
                 echo '</form>';    
                 $value = $_POST['foods'];
                 
-                $sql = "DELETE FROM food WHERE Name = '$value'";
-                $result = mysqli_query($conn,$sql) or die("Bad Query: $sql");
+                if($value == "new"){
+                    echo '<form class="nutritionplan-form" action="includes/admin_food.inc.php" method="POST">
+                            <input type ="text" name ="name" placeholder="Name">
+                            <input type ="text" name ="cals" placeholder="Calories">
+                            <input type ="text" name ="proteins" placeholder="Proteins">
+                            <input type ="text" name ="carbs" placeholder="Carbohydrates">
+                            <input type ="text" name ="fats" placeholder="Fats">
+                            <button type ="submit" name="submit">Submit</button>
+                            </form>';             
+                }else{
+                    $sql = "DELETE FROM food WHERE Name = '$value'";
+                    $result = mysqli_query($conn,$sql) or die("Bad Query: $sql");
+                }
 
                 
                 // EXCERCISES's
@@ -59,17 +80,27 @@
                 echo '<form id="form" action="" method="post">';
                 echo '<select name="exercises" class="ddList">';
                 echo "<option value='default'>Please Select an Exercise</option>";
+                echo "<option value='new'>Create New</option>";
                 while($row = mysqli_fetch_assoc($result)){
                     $rowname = $row['Name'];
-                    echo "<option value='$rowname'>" . $rowname . "</option>";
+                    echo "<option value='$rowname'>" . "Delete ". $rowname . "</option>";
                 }
                 echo '</select>';
-                echo '<input type="submit" value="Delete">';
+                echo '<input type="submit" value="Submit">';
                 echo '</form>';    
                 $value = $_POST['exercises'];
                 
-                $sql = "DELETE FROM exercise WHERE Name = '$value'";
-                $result = mysqli_query($conn,$sql) or die("Bad Query: $sql");
+                if($value == "new"){
+                    echo '<form class="nutritionplan-form" action="includes/admin_exercise.inc.php" method="POST">
+                            <input type ="text" name ="name" placeholder="Name">
+                            <input type ="text" name ="bodypart" placeholder="Body Part">
+                            <input type ="text" name ="equipment" placeholder="Equipment">
+                            <button type ="submit" name="submit">Submit</button>
+                            </form>';    
+                }else{                
+                    $sql = "DELETE FROM exercise WHERE Name = '$value'";
+                    $result = mysqli_query($conn,$sql) or die("Bad Query: $sql");
+                }
             }else{
                 header("Location: index.php");
                 exit();  

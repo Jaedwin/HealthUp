@@ -218,6 +218,15 @@ header .nav-login a{
     text-align: center;
 }
 
+.main-container h1{
+    font-family:  arial;
+    font-size: 40px;
+    color: #111;
+    line-height: 50px;
+    text-align: center;
+    font-variant: small-caps;
+}
+
 .main-container select{
 	display: block;
 	margin: 0 auto;
@@ -243,7 +252,6 @@ header .nav-login a{
 	display: block;
 	margin: 0 auto;
     margin-top: 10px;
-    margin-bottom: 50px;
     font-family:  arial;
     font-size: 15px;
     color: #111;
@@ -264,7 +272,7 @@ header .nav-login a{
 .nutritionplan-form {
     width: 400px;
     margin: 0 auto;
-    padding-top: 30px;    
+    padding-top: 10px;    
 }
 
 .nutritionplan-form input{
