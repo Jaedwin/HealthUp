@@ -30,17 +30,24 @@ if (isset($_POST['submit'])) {
 					exit();
 				} elseif ($hashedPwdCheck == true) {
 					//Log in the user here
-					$_SESSION['u_id'] = $row['ID'];
-					$_SESSION['u_first'] = $row['Firstname'];
-					$_SESSION['u_last'] = $row['Lastname'];
-					$_SESSION['u_email'] = $row['Email'];
-					$_SESSION['u_uid'] = $row['Username'];
-					$_SESSION['u_cweight'] = $row['CurrentWeight'];
-					$_SESSION['u_gweight'] = $row['GoalWeight'];
-					$_SESSION['u_height'] = $row['Height'];
-					$_SESSION['u_bodyfat'] = $row['BodyFat'];
-					header("Location: ../index.php?login=success");
-					exit();
+                    $id = $row['ID'];
+                    if($id == 0){
+                        $_SESSION['u_id'] = $row['ID'];
+                        header("Location: ../admin.php?login=success");
+                        exit();                    
+                    }else{
+                        $_SESSION['u_id'] = $row['ID'];
+                        $_SESSION['u_first'] = $row['Firstname'];
+                        $_SESSION['u_last'] = $row['Lastname'];
+                        $_SESSION['u_email'] = $row['Email'];
+                        $_SESSION['u_uid'] = $row['Username'];
+                        $_SESSION['u_cweight'] = $row['CurrentWeight'];
+                        $_SESSION['u_gweight'] = $row['GoalWeight'];
+                        $_SESSION['u_height'] = $row['Height'];
+                        $_SESSION['u_bodyfat'] = $row['BodyFat'];
+                        header("Location: ../index.php?login=success");
+                        exit();
+                    }
 				}
 			}
 		}

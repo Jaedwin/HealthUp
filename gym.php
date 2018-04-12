@@ -4,7 +4,7 @@
 
 <section class ="main-container">
     <div class="main-wrapper">
-		<form class="clientreg-form" action="includes/gym.inc.php" method="POST">
+		<form class="nutritionplan-form" action="includes/gym.inc.php" method="POST">
 		
 		<h2>Remove Gym</h2>
 		<input type ="text" name ="location2" placeholder="Location">

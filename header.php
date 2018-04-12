@@ -17,12 +17,13 @@
             <ul>
              <?php
                     if(isset($_SESSION['u_id'])){
+                        $id = $_SESSION['u_id'];
+                        if($id != 0){
                             echo '<li><a href ="index.php">Home</a></li>
-                <li><a href ="nutrition_plan.php">Nutrition Plan</a></li>
-                <li><a href ="workout_routine.php">Workout Routine</a></li>
-				<li><a href ="client.php">Client</a></li>
-				<li><a href ="employee.php">Employee</a></li>
-				<li><a href ="gym.php">Gym</a></li>';
+                            <li><a href ="nutrition_plan.php">Nutrition Plan</a></li>
+                            <li><a href ="workout_routine.php">Workout Routine</a></li>
+                            <li><a href ="client.php">Client</a></li>';
+                        }
                     }else{
                         echo '<li><a href ="index.php">Home</a></li>';
                     }
