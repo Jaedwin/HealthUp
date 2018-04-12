@@ -17,8 +17,9 @@
                 
                 echo '<form id="form" action="" method="post">';
                 echo '<select name="gyms" class="ddList">';
-                echo "<option value='default'>Please Select a Gym</option>";
-                echo "<option value='new'>Create New</option>";                
+                echo "<option value='default'>Gym Options</option>";
+                echo "<option value='new'>Create New</option>";   
+                echo "<option value='add_owner'>Add an Owner to an Existing Gym</option>";           
                 while($row = mysqli_fetch_assoc($result)){
                     $rowname = $row['Name'];
                     echo "<option value='$rowname'>"."Delete ".$rowname."</option>";
@@ -34,6 +35,12 @@
                             <input type ="text" name ="Location" placeholder="Location">
                             <button type ="submit" name="submit">Submit</button>
                             </form>';          
+                }else if($value == "add_owner"){
+                    echo '<form class="nutritionplan-form" action="includes/admin_gymowner.inc.php" method="POST">
+                            <input type ="text" name ="Location" placeholder="Location">
+                            <input type ="text" name ="SIN" placeholder="SIN">
+                            <button type ="submit" name="submit">Submit</button>
+                            </form>';  
                 }else{
                     $sql = "DELETE FROM gym WHERE Name = '$value'";
                     $result = mysqli_query($conn,$sql) or die("Bad Query: $sql");
