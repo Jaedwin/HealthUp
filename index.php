@@ -59,15 +59,70 @@
 				$resultCheck = mysqli_num_rows($result);
 				
 				if ($resultCheck > 0){
-                echo "<h2>Client Information:</h2>";
-				echo "<table border='1'>";
-				echo "<tr><td>Availability</td><td>Gym</td><td>Address</td></tr>";
-				while($row = mysqli_fetch_assoc($result)){
-					$avail = $row['Availability'];
-					$gym = $row['Address'];
-					echo "<tr><td>$avail</td><td></td><td>$gym</td></tr>";
+					echo "<h2>Client Information:</h2>";
+					echo "<table border='1'>";
+					echo "<tr><td>Home Address</td><td>Training Availability</td><td>Phone Number</td></tr>";
+					$row = mysqli_fetch_assoc($result);
+					$cAvail = $row['Availability'];
+					$cAddress = $row['Address'];
+					$cPhone = $row['Phone'];
+					echo "<tr><td>$cAddress</td><td>$cAvail</td><td>$cPhone</td></tr>";
+					echo "</table>";
+					
+					// Checking if Client has gym membership
+					$memID = $row['ID'];
+					$sql2 = "SELECT * FROM canbememberof WHERE MemberID = $memID";
+					$result2 = mysqli_query($conn,$sql2) or die("Bad Query: $sql2");
+					$resultCheck2 = mysqli_num_rows($result2);
+					if ($resultCheck2 > 0){
+					echo "<h2>Gym Membership(s):</h2>";
+					echo "<table border='1'>";
+					echo "<tr><td>Gym Name</td><td>Address</td></tr>";
+					while($row2 = mysqli_fetch_assoc($result2)){
+						$gAddress = $row2['Location'];
+						// fetching Gym's name from gym using address //
+						$sql3 = "SELECT Name FROM gym WHERE Location = '$gAddress'";
+						$result3 = mysqli_query($conn,$sql3) or die("Bad Query: $sql3");
+						$row3 = mysqli_fetch_assoc($result3);
+						$gName = $row3['Name'];
+						echo "<tr><td>$gName</td><td>$gAddress</td></tr>";					
+						}
+					echo "</table>";
 					}
-				echo "</table>";
+				}
+				
+				// Checking if user is an employee
+				$sql = "SELECT * FROM employee WHERE UserId = $id";
+                $result = mysqli_query($conn,$sql) or die("Bad Query: $sql");
+				$resultCheck = mysqli_num_rows($result);
+				if($resultCheck == 1){
+					$row = mysqli_fetch_assoc($result);
+					$wSched = $row['Schedule'];
+					$wage = $row['Wage'];
+					$wAddress = $row['Address'];
+					// fetching Gym's name from gym using address //
+					$sql2 = "SELECT Name FROM gym WHERE Location = '$wAddress'";
+					$result2 = mysqli_query($conn,$sql2) or die("Bad Query: $sql2");
+					$row2 = mysqli_fetch_assoc($result2);
+					$wName = $row2['Name'];
+					echo "<h2>Work Information:</h2>";
+					echo "<table border='1'>";
+					echo "<tr><td>Work</td><td>Address</td><td>Current Wage</td><td>Schedule</td></tr>";
+					echo "<tr><td>$wName</td><td>$wAddress</td><td>\$$wage/hr</td><td>$wSched</td></tr>";
+					echo "</table>";
+					echo '<form class="signup-form" action="employee.php" method="post">
+						<button type ="submit" name ="updateEmp">Manage Employee Info</button>
+						</form>';
+					// checking if user is an owner //
+					$SIN = $row['SIN'];
+					$sql3 = "SELECT * FROM owns WHERE SIN = $SIN";
+					$result3 = mysqli_query($conn,$sql3) or die("Bad Query: $sql3");
+					$resultCheck3 = mysqli_num_rows($result3);
+					if ($resultCheck3 > 0){
+						echo '<form class="signup-form" action="gym.php" method="post">
+						<button type ="submit" name ="updateGym">Manage Gym</button>
+						</form>';
+					}
 				}
             }else{
                 echo '<h2>Please Login or Signup</h2>';

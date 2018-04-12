@@ -1,17 +1,16 @@
 CREATE TABLE User(
-	ID int NOT NULL AUTO_INCREMENT,
-	Age int NOT NULL,
-	Email varchar(256) NOT NULL,
-	Firstname varchar(256) NOT NULL,
-	Lastname varchar(256) NOT NULL,
-	Username varchar(256) NOT NULL, 
-	Password varchar(256) NOT NULL, 
-	CurrentWeight int NOT NULL,
-	GoalWeight int NOT NULL,
-	Height varchar(256) NOT NULL,
-	BodyFat float NOT NULL,
-	PRIMARY KEY (ID)
-);
+		ID int NOT NULL AUTO_INCREMENT,
+		Age int NOT NULL,
+		Email varchar(256) NOT NULL,
+		Firstname varchar(256) NOT NULL,
+		Lastname varchar(256) NOT NULL,
+		Username varchar(256) NOT NULL, 
+		Password varchar(256) NOT NULL, 
+		CurrentWeight int NOT NULL,
+		GoalWeight int NOT NULL,
+		Height float NOT NULL,
+		PRIMARY KEY (ID)
+	);
 
 CREATE TABLE WorkoutRoutine(
     WorkoutID int NOT NULL AUTO_INCREMENT,
@@ -87,10 +86,6 @@ CREATE TABLE Client(
 CREATE TABLE Gym(
 	Name varchar(45) NOT NULL,
 	Location varchar(256) NOT NULL,
-	Status bool,
-	TotalMembers int,
-	LiveCount int,
-	Capacity int,
 	PRIMARY KEY (Location)
 );
 
@@ -128,36 +123,35 @@ CREATE TABLE CanBeMemberOf(
 	FOREIGN KEY(Location) REFERENCES Gym(Location) ON UPDATE CASCADE ON DELETE CASCADE,
 	FOREIGN KEY(MemberId) REFERENCES Client(ID) ON UPDATE CASCADE ON DELETE CASCADE
 );
+INSERT INTO USER (Age, Email, Firstname, Lastname, Username, Password, CurrentWeight, GoalWeight, Height )
+		VALUES(17, 'spiderman@gmail.com', 'Peter', 'Parker', 'spiders4life', '$2y$10$fBWp1Wg4bISRImNqMPZZeeYAESlH59W45.ksSNj5.LFhPlkIdc.qK', 150, 167, 177.8);
+		
+	INSERT INTO USER (Age, Email, Firstname, Lastname, Username, Password, CurrentWeight, GoalWeight, Height )
+		VALUES(45, 'ironman@gmail.com', 'Tony', 'Stark', 'anthony_stark', '$2y$10$fBWp1Wg4bISRImNqMPZZeeYAESlH59W45.ksSNj5.LFhPlkIdc.qK', 225, 100, 185.42);
 
-INSERT INTO USER (Age, Email, Firstname, Lastname, Username, Password, CurrentWeight, GoalWeight, Height, BodyFat)
-    VALUES(17, 'spiderman@gmail.com', 'Peter', 'Parker', 'spiders4life', '$2y$10$fBWp1Wg4bISRImNqMPZZeeYAESlH59W45.ksSNj5.LFhPlkIdc.qK', 150, 167, '5 feet 10 in', 0.10);
-	
-INSERT INTO USER (Age, Email, Firstname, Lastname, Username, Password, CurrentWeight, GoalWeight, Height, BodyFat)
-    VALUES(45, 'ironman@gmail.com', 'Tony', 'Stark', 'anthony_stark', '$2y$10$fBWp1Wg4bISRImNqMPZZeeYAESlH59W45.ksSNj5.LFhPlkIdc.qK', 225, 100, '6 feet 1 in', 0.20);
+	INSERT INTO USER (Age, Email, Firstname, Lastname, Username, Password, CurrentWeight, GoalWeight, Height )
+		VALUES(48, 'antman@gmail.com', 'Scot', 'Lang', 'antz_555', '$2y$10$fBWp1Wg4bISRImNqMPZZeeYAESlH59W45.ksSNj5.LFhPlkIdc.qK', 172, 180, 177.8);
 
-INSERT INTO USER (Age, Email, Firstname, Lastname, Username, Password, CurrentWeight, GoalWeight, Height, BodyFat)
-    VALUES(48, 'antman@gmail.com', 'Scot', 'Lang', 'antz_555', '$2y$10$fBWp1Wg4bISRImNqMPZZeeYAESlH59W45.ksSNj5.LFhPlkIdc.qK', 172, 180, '5 feet 10 in', 0.15);
+	INSERT INTO USER (Age, Email, Firstname, Lastname, Username, Password, CurrentWeight, GoalWeight, Height )
+		VALUES(96, 'captainamerica@gmail.com', 'Steve', 'Rogers', 'USA_number1', '$2y$10$fBWp1Wg4bISRImNqMPZZeeYAESlH59W45.ksSNj5.LFhPlkIdc.qK', 194, 215, 187.96);
 
-INSERT INTO USER (Age, Email, Firstname, Lastname, Username, Password, CurrentWeight, GoalWeight, Height, BodyFat)
-    VALUES(96, 'captainamerica@gmail.com', 'Steve', 'Rogers', 'USA_number1', '$2y$10$fBWp1Wg4bISRImNqMPZZeeYAESlH59W45.ksSNj5.LFhPlkIdc.qK', 194, 215, '6 feet 2 in', 0.15);
+	INSERT INTO USER (Age, Email, Firstname, Lastname, Username, Password, CurrentWeight, GoalWeight, Height )
+		VALUES(42, 'doctorstrange@gmail.com', 'Steven', 'Strange', 'wizard_boi', '$2y$10$fBWp1Wg4bISRImNqMPZZeeYAESlH59W45.ksSNj5.LFhPlkIdc.qK', 172, 175, 185.42);
 
-INSERT INTO USER (Age, Email, Firstname, Lastname, Username, Password, CurrentWeight, GoalWeight, Height, BodyFat)
-    VALUES(42, 'doctorstrange@gmail.com', 'Steven', 'Strange', 'wizard_boi', '$2y$10$fBWp1Wg4bISRImNqMPZZeeYAESlH59W45.ksSNj5.LFhPlkIdc.qK', 172, 175, '6 feet 1 in', 0.9);
+	INSERT INTO USER (Age, Email, Firstname, Lastname, Username, Password, CurrentWeight, GoalWeight, Height )
+		VALUES(42, 'scarletwitch@gmail.com', 'Wanda', 'Maximoff', 'red_witch', '$2y$10$fBWp1Wg4bISRImNqMPZZeeYAESlH59W45.ksSNj5.LFhPlkIdc.qK', 132, 125, 170.18);
 
-INSERT INTO USER (Age, Email, Firstname, Lastname, Username, Password, CurrentWeight, GoalWeight, Height, BodyFat)
-    VALUES(42, 'scarletwitch@gmail.com', 'Wanda', 'Maximoff', 'red_witch', '$2y$10$fBWp1Wg4bISRImNqMPZZeeYAESlH59W45.ksSNj5.LFhPlkIdc.qK', 132, 125, '5 feet 7 in', 0.15);
+	INSERT INTO USER (Age, Email, Firstname, Lastname, Username, Password, CurrentWeight, GoalWeight, Height )
+		VALUES(51, 'captainmarvel@gmail.com', 'Carol', 'Danvers', 'ms_marvel', '$2y$10$fBWp1Wg4bISRImNqMPZZeeYAESlH59W45.ksSNj5.LFhPlkIdc.qK', 165, 170, 180.34);
+		
+	INSERT INTO USER (Age, Email, Firstname, Lastname, Username, Password, CurrentWeight, GoalWeight, Height )
+		VALUES(49, 'hulk@gmail.com', 'Bruce', 'Banner', 'green_man', '$2y$10$fBWp1Wg4bISRImNqMPZZeeYAESlH59W45.ksSNj5.LFhPlkIdc.qK', 128, 900, 175.26);
 
-INSERT INTO USER (Age, Email, Firstname, Lastname, Username, Password, CurrentWeight, GoalWeight, Height, BodyFat)
-    VALUES(51, 'captainmarvel@gmail.com', 'Carol', 'Danvers', 'ms_marvel', '$2y$10$fBWp1Wg4bISRImNqMPZZeeYAESlH59W45.ksSNj5.LFhPlkIdc.qK', 165, 170, '5 feet 11 in', 0.21);
-	
-INSERT INTO USER (Age, Email, Firstname, Lastname, Username, Password, CurrentWeight, GoalWeight, Height, BodyFat)
-    VALUES(49, 'hulk@gmail.com', 'Bruce', 'Banner', 'green_man', '$2y$10$fBWp1Wg4bISRImNqMPZZeeYAESlH59W45.ksSNj5.LFhPlkIdc.qK', 128, 900, '5 feet 9 in', 0.15);
-
-INSERT INTO USER (Age, Email, Firstname, Lastname, Username, Password, CurrentWeight, GoalWeight, Height, BodyFat)
-    VALUES(34, 'thor@gmail.com', 'Thor', 'Odinson', 'God_of_Thunder', '$2y$10$fBWp1Wg4bISRImNqMPZZeeYAESlH59W45.ksSNj5.LFhPlkIdc.qK', 200, 220, '6 feet 1 in', 0.1);
-	
-INSERT INTO USER (Age, Email, Firstname, Lastname, Username, Password, CurrentWeight, GoalWeight, Height, BodyFat)
-    VALUES(37, 'blackwidow@gmail.com', 'Natasha', 'Romanova', 'spy_girl', '$2y$10$fBWp1Wg4bISRImNqMPZZeeYAESlH59W45.ksSNj5.LFhPlkIdc.qK', 135, 140, '5 feet 6 in', 0.12);
+	INSERT INTO USER (Age, Email, Firstname, Lastname, Username, Password, CurrentWeight, GoalWeight, Height )
+		VALUES(34, 'thor@gmail.com', 'Thor', 'Odinson', 'God_of_Thunder', '$2y$10$fBWp1Wg4bISRImNqMPZZeeYAESlH59W45.ksSNj5.LFhPlkIdc.qK', 200, 220, 185.42);
+		
+	INSERT INTO USER (Age, Email, Firstname, Lastname, Username, Password, CurrentWeight, GoalWeight, Height)
+		VALUES(37, 'blackwidow@gmail.com', 'Natasha', 'Romanova', 'spy_girl', '$2y$10$fBWp1Wg4bISRImNqMPZZeeYAESlH59W45.ksSNj5.LFhPlkIdc.qK', 135, 140, 167.64);
 
 INSERT INTO Client (UserId, Phone, Address, Availability)
     VALUES(1,'123-555-4567', '350 5th Ave, New York, NY', 'M: 2:00 p.m - 5:00 W: 3:00 F: 10:00 - 7:00');
@@ -168,14 +162,14 @@ INSERT INTO Client (UserId, Phone, Address, Availability)
 INSERT INTO Client (UserId, Phone, Address, Availability)
     VALUES(4, '123-555-4567', '282039 Fox Meadow Vale RR2', 'F: 10:00 - 7:00 Sat: 5:00-8:00 Su: 11;00 - 7:00');
 
-INSERT INTO GYM (Name, Location, Status, TotalMembers, LiveCount, Capacity)
-    VALUES('World Health Calgary Gyms','1677, 1632 - 14 Ave NW', true, 0, 0, 200);
-INSERT INTO GYM (Name, Location, Status, TotalMembers, LiveCount, Capacity)
-    VALUES('Univercity of Calgary Active Living','2500 Univercity Drive Northwest', true, 0, 0, 200);
-INSERT INTO GYM (Name, Location, Status, TotalMembers, LiveCount, Capacity)
-    VALUES('Golds Gym','360 Hampton Drive Venice CA', true, 0, 0, 350);
-INSERT INTO GYM (Name, Location, Status, TotalMembers, LiveCount, Capacity)
-    VALUES('Firehouse Fitness','3518 7th St', true, 0, 0, 100);
+INSERT INTO GYM (Name, Location)
+    VALUES('World Health Calgary Gyms','1677, 1632 - 14 Ave NW');
+INSERT INTO GYM (Name, Location)
+    VALUES('Univercity of Calgary Active Living','2500 Univercity Drive Northwest');
+INSERT INTO GYM (Name, Location)
+    VALUES('Golds Gym','360 Hampton Drive Venice CA');
+INSERT INTO GYM (Name, Location)
+    VALUES('Firehouse Fitness','3518 7th St');
 
 INSERT INTO Employee (SIN, UserId, Wage, Address, Phone, Schedule)
     VALUES(123456789, 5, 20.00,'1677, 1632 - 14 Ave NW','123-888-9898','F: 10:00 - 7:00 Sat: 5:00-8:00 Su: 11;00 - 7:00');

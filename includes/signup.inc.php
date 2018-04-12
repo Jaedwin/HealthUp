@@ -12,7 +12,6 @@ if (isset($_POST['submit'])) {
     $age = mysqli_real_escape_string($conn, $_POST['age']);
     $cweight = mysqli_real_escape_string($conn, $_POST['currweight']);
     $gweight = mysqli_real_escape_string($conn, $_POST['goalweight']);
-    $bfat = mysqli_real_escape_string($conn, $_POST['bodyfat']);
     $height = mysqli_real_escape_string($conn, $_POST['height']);
     
     //Error handlers
@@ -42,7 +41,7 @@ if (isset($_POST['submit'])) {
                     //Hashing the password
                     $hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
                     //Insert the user into the database
-                    $sql = "INSERT INTO user(age, email, firstname, lastname, username, password, currentweight, goalweight, height, bodyfat) VALUES ('$age','$email','$first','$last','$uid','$hashedPwd','$cweight','$gweight','$height','$bfat');"; //replace pwd -> hashedPwd
+                    $sql = "INSERT INTO user(age, email, firstname, lastname, username, password, currentweight, goalweight, height) VALUES ('$age','$email','$first','$last','$uid','$hashedPwd','$cweight','$gweight','$height');"; //replace pwd -> hashedPwd
                     mysqli_query($conn, $sql);
                     header("Location: ../signup.php?signup=success");
                     exit();

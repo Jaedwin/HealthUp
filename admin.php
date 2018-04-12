@@ -39,6 +39,19 @@
                     $result = mysqli_query($conn,$sql) or die("Bad Query: $sql");
                 }
                 
+				// EMPLOYEE
+                $sql = "SELECT * FROM gym";
+                $result = mysqli_query($conn,$sql) or die("Bad Query: $sql");
+                echo "<h2>Create Employee Account</h2>";
+                
+                echo '<form class="nutritionplan-form" action="includes/admin_employee.inc.php" method="POST">
+                <input type ="text" name ="Location" placeholder="Location">
+                <input type ="text" name ="SIN" placeholder="SIN">
+				<input type ="text" name ="Username" placeholder="Username">
+                <button type ="submit" name="submit">Submit</button>
+                </form>';  
+                
+				
                 // OWNER's
                 $sql = "SELECT * FROM owns";
                 $result = mysqli_query($conn,$sql) or die("Bad Query: $sql");
@@ -64,7 +77,7 @@
                             <button type ="submit" name="submit">Submit</button>
                             </form>';  
                 }else{
-                    $sql = "DELETE FROM food WHERE Name = '$value'";
+                    $sql = "DELETE FROM owns WHERE SIN = '$value';";
                     $result = mysqli_query($conn,$sql) or die("Bad Query: $sql");
                 }
                 

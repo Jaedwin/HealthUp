@@ -15,7 +15,6 @@
             <input type ="text" name ="age" placeholder="Age">
             <input type ="text" name ="currweight" placeholder="Current Weight (in lbs)">
             <input type ="text" name ="goalweight" placeholder="Goal Weight (in lbs)">
-            <input type ="text" name ="bodyfat" placeholder="Bodyfat %">
             <input type ="text" name ="height" placeholder="Height (in cm)">
             <button type ="submit" name="submit">Sign up</button>
         </form>
