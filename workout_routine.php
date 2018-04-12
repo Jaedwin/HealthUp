@@ -30,7 +30,7 @@
                 if($value == "default"){
                 }else if($value == "new"){
 					//Create new Routine
-                     echo '<form class="workoutroutine-form" action="includes/workout_routine.inc.php" method="POST"> 
+                     echo '<form class="nutritionplan-form" action="includes/workout_routine.inc.php" method="POST"> 
                                 <h2>New Routine</h2>
                                 <input type ="text" name ="name" placeholder="Routine Name">
                                 <button type ="submit" name="submit_routine">Create</button>
