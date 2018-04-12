@@ -19,7 +19,6 @@
                 echo '<select name="gyms" class="ddList">';
                 echo "<option value='default'>Gym Options</option>";
                 echo "<option value='new'>Create New</option>";   
-                echo "<option value='add_owner'>Add an Owner to an Existing Gym</option>";           
                 while($row = mysqli_fetch_assoc($result)){
                     $rowname = $row['Name'];
                     echo "<option value='$rowname'>"."Delete ".$rowname."</option>";
@@ -35,14 +34,37 @@
                             <input type ="text" name ="Location" placeholder="Location">
                             <button type ="submit" name="submit">Submit</button>
                             </form>';          
-                }else if($value == "add_owner"){
+                }else{
+                    $sql = "DELETE FROM gym WHERE Name = '$value'";
+                    $result = mysqli_query($conn,$sql) or die("Bad Query: $sql");
+                }
+                
+                // OWNER's
+                $sql = "SELECT * FROM owns";
+                $result = mysqli_query($conn,$sql) or die("Bad Query: $sql");
+                echo "<h2>Owners</h2>";
+                
+                echo '<form id="form" action="" method="post">';
+                echo '<select name="owners" class="ddList">';
+                echo "<option value='default'>Please Select an Owner</option>";
+                echo "<option value='new'>Add Owner to Existing Gym</option>";
+                while($row = mysqli_fetch_assoc($result)){
+                    $rowname = $row['SIN'];
+                    echo "<option value='$rowname'>" ."Delete ". $rowname . "</option>";
+                }
+                echo '</select>';
+                echo '<input type="submit" value="Submit">';
+                echo '</form>';    
+                $value = $_POST['owners'];
+                
+                if($value == "new"){
                     echo '<form class="nutritionplan-form" action="includes/admin_gymowner.inc.php" method="POST">
                             <input type ="text" name ="Location" placeholder="Location">
                             <input type ="text" name ="SIN" placeholder="SIN">
                             <button type ="submit" name="submit">Submit</button>
                             </form>';  
                 }else{
-                    $sql = "DELETE FROM gym WHERE Name = '$value'";
+                    $sql = "DELETE FROM food WHERE Name = '$value'";
                     $result = mysqli_query($conn,$sql) or die("Bad Query: $sql");
                 }
                 
